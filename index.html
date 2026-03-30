@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日养元</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="mist mist-one"></div>
+    <div class="mist mist-two"></div>
+
+    <header class="topbar panel">
+      <div>
+        <p class="eyebrow">养生打卡 · 情绪陪伴</p>
+        <h1>今日养元</h1>
+        <p class="subtitle">把今天照顾好一点，元气就会慢慢回来。</p>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-label">当前境界</span>
+          <strong id="current-level">养元一阶</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">累计养元值</span>
+          <strong id="current-score">0</strong>
+        </article>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="companion panel">
+        <div id="companion-visual" class="companion-visual companion-state-idle">
+          <div class="halo"></div>
+          <div class="spirit-ring spirit-ring-outer"></div>
+          <div class="spirit-ring spirit-ring-inner"></div>
+          <div class="spirit-sigil">系统精灵</div>
+          <video
+            id="companion-video"
+            class="panda-model"
+            src="assets/video_panda.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            aria-label="养元灵使熊猫视频形象">
+          </video>
+          <div class="spirit-floor"></div>
+        </div>
+        <div class="companion-copy">
+          <p class="section-kicker">虚拟陪伴者</p>
+          <h2>养元灵使</h2>
+          <p class="welcome-line">今日的养元修习已经为你备好，先完成一件小事吧。</p>
+          <blockquote id="encouragement-text" class="encouragement"></blockquote>
+          <button id="refresh-encouragement" class="secondary-button" type="button">换一句鼓励</button>
+        </div>
+      </section>
+
+      <section class="camera panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">动作验证</p>
+            <h2>完成前先通过镜头确认</h2>
+          </div>
+          <p class="section-meta">仅在本地浏览器中使用摄像头，不上传视频内容。</p>
+        </div>
+        <div class="camera-stage">
+          <video id="camera-preview" class="camera-preview" autoplay muted playsinline></video>
+          <div id="camera-placeholder" class="camera-placeholder">开启摄像头后，这里会显示实时预览。</div>
+          <div id="camera-overlay" class="camera-overlay">等待动作验证</div>
+        </div>
+        <div class="camera-controls">
+          <button id="start-camera" class="secondary-button" type="button">开启摄像头</button>
+          <button id="stop-camera" class="ghost-button" type="button">关闭摄像头</button>
+        </div>
+        <div class="camera-status-card">
+          <strong id="camera-status-title">等待摄像头授权</strong>
+          <p id="camera-status-detail">点击任务时会进入动作验证，只有检测到明显动作后才会判定完成。</p>
+          <p id="camera-target" class="camera-target">当前未选择任务</p>
+        </div>
+        <div class="verification-progress">
+          <div id="verification-progress-fill" class="verification-progress-fill"></div>
+        </div>
+      </section>
+
+      <section class="tasks panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">今日任务</p>
+            <h2>先完成一件小事</h2>
+          </div>
+          <p class="section-meta">从 100 个静态养元任务中按固定顺序展示 6 个</p>
+        </div>
+        <div id="task-list" class="task-list" aria-live="polite"></div>
+      </section>
+
+      <section class="growth panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">成长反馈</p>
+            <h2>元气正在缓慢回升</h2>
+          </div>
+          <span id="next-level-gap" class="growth-chip"></span>
+        </div>
+        <div class="progress-block">
+          <div class="progress-copy">
+            <span>距离下一阶</span>
+            <strong id="next-level-name"></strong>
+          </div>
+          <div class="progress-rail" aria-hidden="true">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+        <p id="level-message" class="growth-message">还在养元一阶，慢慢积累就很好。</p>
+      </section>
+
+      <section class="ambient panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">氛围反馈</p>
+            <h2>每次完成都留下一点光</h2>
+          </div>
+          <div id="ambient-pulse" class="ambient-pulse">灵息安定</div>
+        </div>
+        <div id="feedback-toast" class="feedback-toast" role="status" aria-live="polite">完成任务后会在这里收到鼓励。</div>
+        <ul id="feedback-log" class="feedback-log"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
